@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://LucasStudioLeo.github.io</id>
+    <title>紫喻的笔记本</title>
+    <updated>2024-04-24T22:04:35.771Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://LucasStudioLeo.github.io"/>
+    <link rel="self" href="https://LucasStudioLeo.github.io/atom.xml"/>
+    <subtitle>一切皆有可能，不试试怎么知道行不行呢！</subtitle>
+    <logo>https://LucasStudioLeo.github.io/images/avatar.png</logo>
+    <icon>https://LucasStudioLeo.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, 紫喻的笔记本</rights>
+    <entry>
+        <title type="html"><![CDATA[Linux 如何创建Raid软阵列]]></title>
+        <id>https://LucasStudioLeo.github.io/post/linux-ru-he-chuang-jian-raid-ruan-zhen-lie/</id>
+        <link href="https://LucasStudioLeo.github.io/post/linux-ru-he-chuang-jian-raid-ruan-zhen-lie/">
+        </link>
+        <updated>2024-04-24T21:56:30.000Z</updated>
+        <content type="html"><![CDATA[<p>在Linux中创建和管理RAID阵列通常使用mdadm工具。以下是创建RAID 0阵列的基本步骤和示例代码：<br>
+安装mdadm工具（如果尚未安装）：<br>
+sudo apt-install mdadm<br>
+假设有两个未分配的磁盘，例如/dev/sdb和/dev/sdc。创建RAID 0阵列：<br>
+sudo mdadm --create --verbose /dev/md0 --level=0 --raid-devices=2 /dev/sdb /dev/sdc<br>
+创建文件系统（例如ext4）：<br>
+sudo mkfs.ext4 /dev/md0<br>
+挂载阵列：<br>
+sudo mkdir /mnt/raid0<br>
+sudo mount /dev/md0 /mnt/raid0<br>
+为了自动挂载，将以下行添加到/etc/fstab文件：<br>
+/dev/md0 /mnt/raid0 ext4 defaults 0 0<br>
+保存 RAID 配置以确保在启动时重新创建阵列：<br>
+sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf<br>
+更新initramfs，以便在启动时加载RAID驱动程序：<br>
+sudo update-initramfs -u<br>
+以上步骤创建了一个RAID 0阵列，并将其格式化为ext4文件系统，然后将其挂载到/mnt/raid0目录。这个过程对于任何其他类型的RAID阵列（例如RAID 1, RAID 5等）都是类似的，只需要更改mdadm命令中的--level选项和--raid-devices选项。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[编程小白能做一个能够正经投入使用的软件吗（让ChatGPT协助完成）]]></title>
+        <id>https://LucasStudioLeo.github.io/post/chun-xiao-bai-neng-zuo-yi-ge-neng-gou-zheng-jing-tou-ru-shi-yong-de-ruan-jian-ma-chatgpt-xie-zhu-wan-cheng/</id>
+        <link href="https://LucasStudioLeo.github.io/post/chun-xiao-bai-neng-zuo-yi-ge-neng-gou-zheng-jing-tou-ru-shi-yong-de-ruan-jian-ma-chatgpt-xie-zhu-wan-cheng/">
+        </link>
+        <updated>2024-04-21T15:47:47.000Z</updated>
+        <content type="html"><![CDATA[<p>[目的很简单，想要做一个能监督安规定时间关闭电脑并检测在指定时间之后开机的话执行关机的程序，类似于游戏的防沉迷系统，命名为（早睡早起身体好计划），但是我不会编程，完完全全借助于强大的ChatGPT能够完成目标吗，让我们试试看，此文章记录我的探索过程，如果顺利的话将会持续更新到完结，也有可能半途弃坑，谁知道呢，让我们先迈出第一步吧！]</p>
+<p>[和ChatGPT的一些对话]</p>
+<p>？如何制作一个带操作界面的程序<br>
+！要制作一个带操作界面的程序，通常需要以下步骤：<br>
+1.确定程序的功能和需求。首先，需要明确程序的功能和需求，以便确定操作界面的布局和设计。例如，如果是一个计算器程序，需要设计数字按钮和计算符号，并确定计算结果的输出位置。<br>
+2.选择开发工具和技术。根据程序的需求，选择适合的开发工具和技术，例如，使用C#语言和WPF框架制作Windows操作系统上的界面程序。<br>
+3.设计操作界面。设计操作界面需要考虑用户的使用习惯和体验，包括布局、颜色、字体等元素。<br>
+4.开发程序。根据操作界面的设计，使用所选开发工具和技术开发程序。<br>
+5.测试程序。在程序开发完成后，需要进行测试以确保程序的稳定性和功能的正确性。<br>
+总之，制作带操作界面的程序需要有清晰的需求和设计，同时需要掌握相应的开发技术和工具，并进行充分的测试和优化。</p>
+<p>？请问你会易语言吗<br>
+！我目前不会易语言，但我可以理解和使用多种编程语言如Python、Java、C++等。</p>
+<p>？帮我写一个Python脚本包含定时和到时间自动关机，时间由用户自行输入<br>
+！代码输出``````````</p>
+<p>2024年04月22日 00:12:25</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[低预算装一台黑色海景房主机]]></title>
+        <id>https://LucasStudioLeo.github.io/post/di-yu-suan-zhuang-yi-tai-hei-se-hai-jing-fang-zhu-ji/</id>
+        <link href="https://LucasStudioLeo.github.io/post/di-yu-suan-zhuang-yi-tai-hei-se-hai-jing-fang-zhu-ji/">
+        </link>
+        <updated>2024-04-19T09:45:16.000Z</updated>
+        <content type="html"><![CDATA[<p>[这段时间电脑配件的价格越来越高，在这样的情况下配一台极低预算的游戏主机需要多少钱？]<br>
+首先是配件选择的部分：<br>
+处理器： E5-2666 v3（10核处理器,CPU主频为 2.9Ghz,鸡血全核睿频3.5Ghz。三级缓存为25MB)<br>
+主板：精粤 X99M-D D3版本（带双协议m.2插槽一个，并且D3版本的内存价格是十分便宜的）<br>
+内存：16G 1600 三星服务器内存 <em>2 32G（32G内存才不到100块你敢信吗）<br>
+散热：冰蝶2011 黑色 无灯 温控 版<br>
+硬盘：悉硕 S500 256G NVME+500G  西部数据  机械 （之前蛮火的但是我没用过买来试试看）<br>
+显卡：(矿难没涨价之前的) XFX RX580 8G 2048SP<br>
+机箱：Sumtax 海景房 黑色 全景版（无立柱版本的海景房机箱）<br>
+电源：玄武 500 kill 500瓦 黑色 有电源线（比没有没有电源线多十块）<br>
+网卡：台式机867兆无线+蓝牙4.0 二合一网卡（主板不带无线和蓝牙 但是需要蓝牙连接键盘）<br>
+其他：5</em>黑色 12厘米机箱风扇 +黑橙电源延长线</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[极低低预算装一台黑色海景房主机]]></title>
+        <id>https://LucasStudioLeo.github.io/post/ji-di-di-yu-suan-zhuang-yi-tai-hei-se-hai-jing-fang-zhu-ji/</id>
+        <link href="https://LucasStudioLeo.github.io/post/ji-di-di-yu-suan-zhuang-yi-tai-hei-se-hai-jing-fang-zhu-ji/">
+        </link>
+        <updated>2024-04-19T09:45:16.000Z</updated>
+        <content type="html"><![CDATA[<p>[这段时间电脑配件的价格越来越高，在这样的情况下配一台极低预算的游戏主机需要多少钱？]<br>
+首先是配件选择的部分：<br>
+处理器： E5-2666 v3（10核处理器,CPU主频为 2.9Ghz,鸡血全核睿频3.5Ghz。三级缓存为25MB)<br>
+主板：精粤 X99M-D D3版本（带双协议m.2插槽一个，并且D3版本的内存价格是十分便宜的）<br>
+内存：16G 1600 三星服务器内存 <em>2 32G（32G内存才不到100块你敢信吗）<br>
+散热：冰蝶2011 黑色 无灯 温控 版<br>
+硬盘：悉硕 S500 256G NVME+500G  西部数据  机械 （之前蛮火的但是我没用过买来试试看）<br>
+显卡：(矿难没涨价之前的) XFX RX580 8G 2048SP<br>
+机箱：Sumtax 海景房 黑色 全景版（无立柱版本的海景房机箱）<br>
+电源：玄武 500 kill 500瓦 黑色 有电源线（比没有没有电源线多十块）<br>
+网卡：台式机867兆无线+蓝牙4.0 二合一网卡（主板不带无线和蓝牙 但是需要蓝牙连接键盘）<br>
+其他：5</em>黑色 12厘米机箱风扇 +黑橙电源延长线<br>
+为什么会选择这样的配件：<br>
+极低预算之前有想过去搭配的P106-100的配置，但是这台电脑是给我女朋友组的所以稳定是是非常重要的一个考虑的标准，而且玩的游戏虽然不多但是可能后续有多开的需求所以上了E5.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[售价不到100块的企业级AC+AP套装能用吗]]></title>
+        <id>https://LucasStudioLeo.github.io/post/shou-jie-bu-dao-100-kuai-de-qi-ye-ji-acap-tao-zhuang-neng-yong-ma/</id>
+        <link href="https://LucasStudioLeo.github.io/post/shou-jie-bu-dao-100-kuai-de-qi-ye-ji-acap-tao-zhuang-neng-yong-ma/">
+        </link>
+        <updated>2024-04-19T03:16:39.000Z</updated>
+        <content type="html"><![CDATA[<p>2024年4月，因为需要解决房子无线信号覆盖的问题，我打算做AC+AP的方案，在淘宝上搜索随便一点的套装都需要大几百甚至上千，本着花小钱办大事的原则我在淘宝上找到了极路由 HB5881+HB5811*2的套装售价仅需90元，这还要什么自行车，激情下单，等到货后来试试看性能怎么样！<br>
+[好看是真的好看，配置也很简单，但是我发现好像在装完之前没什么可写的，等我装好之后跟你们讲吧]</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2024年我家云L1 Pro 使用体验 | 刷机教程]]></title>
+        <id>https://LucasStudioLeo.github.io/post/wo-jia-yun-l1-pro-shi-yong-ti-yan-orshua-ji-jiao-cheng/</id>
+        <link href="https://LucasStudioLeo.github.io/post/wo-jia-yun-l1-pro-shi-yong-ti-yan-orshua-ji-jiao-cheng/">
+        </link>
+        <updated>2024-04-19T03:02:59.000Z</updated>
+        <content type="html"><![CDATA[<p>我家云是北京云汇天下科技有限公司旗下的区块链存储产品，将区块链和分布式存储结合，将用户的数据存在硬盘上，先将数据加密然后再通过算法打碎，分散到其他用户的硬盘。区块链可将每个用户贡献的闲置空间以可信的方式记录下来，在存储贡献者和使用者之间建立起可信的交易平台。通过共享闲置空间，用户可以通过赚取CBC积分。新用户购买设备并保持在线，可额外获得CBC积分，每个CBC积分都对应着一定的存储空间和带宽。2019年7月19日，我家云公司通知2019年8月19日停止运营分布式网络、云汇魔盒、我家云服务。2019年7月19日，北京云汇天下科技有限公司停止运营后同时发《停服公告》和《致歉信》。<br>
+2024年4月以80元的价格从淘宝购入一台成色95新的不包含硬盘的L1 Pro版本的机器，由于原装系统已经不再可以使用，所以我决定来刷机折腾一下看看。（还有一块500G的机械硬盘算25块吧）[实际上装的原来家里的硬盘，等不及了先来玩玩看吧]<br>
+刷机前准备工作：http://rom.nanodm.net/beikeyun/tool/win/DriverAssitant_v4.5.zip（安装瑞芯微驱动）[非要要用百度网盘分享资源啊艹关键是自己买的共享会员账户登不上去]<br>
+我家云OMV系统下载地址：https://pan.baidu.com/s/1mCCfIuz7wYTmyJOfre8Y-Q?pwd=x9pc（包括刷机工具和远程连接工具）[买的共享账户就是麻烦，虽然便宜但是好像不是很稳定，好了好了现在爽了登上去会员了随便下，啊哈哈哈哈]<br>
+刷机完成后，通过SSH连接我家云，系统自动执行扩容脚本以及安装导航页面！<br>
+进入OMV网页：http://192.168.x.xxx:88(IP地址登录路由器后台查看)<br>
+[账号：admin，密码：openmediavault]登录以后，点击磁盘选项，看看你的磁盘正不正常。如果这里没有读取到磁盘，直接重启一下OMV。如果你的硬盘之前没有格式化成ext4格式，建议点下擦除。点击系统文件，选择sda1这个，点挂载，挂载以后，就可以看到硬盘的容量了。点下面的共享文件夹，添加，选择设备，输入文件夹名字，比如 Share，然后保存。<br>
+！！疑似高温会掉盘，待后续测试更新</p>
+]]></content>
+    </entry>
+</feed>
